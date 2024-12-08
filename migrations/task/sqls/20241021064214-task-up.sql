@@ -358,15 +358,14 @@ GROUP BY "CREDIT_PACKAGE".name;
 -- 6-4. 查詢：計算 11 月份總營收（使用 purchase_at 欄位統計）
 -- 顯示須包含以下欄位： 總營收
 -- 因為資料是12月新增，改為查詢 12月份總營收
-SELECT
-	SUM(price_paid) AS 總營收
+SELECT SUM(price_paid) AS 總營收
 FROM "CREDIT_PURCHASE"
 WHERE purchase_at >= '2024-12-01 00:00:00' 
 AND purchase_at <= '2024-12-31 23:59:59';
 -- 6-5. 查詢：計算 11 月份有預約課程的會員人數（需使用 Distinct，並用 created_at 和 status 欄位統計）
 -- 顯示須包含以下欄位： 預約會員人數
 -- 因為資料是12月新增，改為查詢 12月份預約會員人數
-SELECT COUNT(DISTINCT(user_id)) AS 預約會員人數
+SELECT COUNT(DISTINCT(user_id)) AS "預約會員人數"
 FROM "COURSE_BOOKING"
 WHERE created_at >= '2024-12-01 00:00:00' 
 AND created_at <='2024-12-31 23:59:59' 
