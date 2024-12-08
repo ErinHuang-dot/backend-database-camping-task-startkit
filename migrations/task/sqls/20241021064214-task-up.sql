@@ -196,18 +196,11 @@ VALUES
         -- 3. 狀態`status` 設定為即將授課
 INSERT INTO "COURSE_BOOKING" (user_id,course_id,booking_at,status)
 VALUES
-(
-    (SELECT id 
-    FROM "USER" 
-    WHERE email = 'wXlTq@hexschooltest.io'),
-    (SELECT id 
-    FROM "COURSE" 
-    WHERE user_id = (
-        SELECT id 
-        FROM "USER" 
-        WHERE email = 'lee2000@hexschooltest.io')),
-    '2024-11-24 16:00:00',
-    '即將授課'
+((SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io'),
+(SELECT id FROM "COURSE" 
+WHERE user_id = (SELECT id FROM "USER" WHERE email = 'lee2000@hexschooltest.io')),
+'2024-11-24 16:00:00',
+'即將授課'
 );
     -- 2. 新增： `好野人` 預約 `李燕容` 的課程
         -- 1. 預約人設為 `好野人`
@@ -245,18 +238,9 @@ WHERE user_id = (
     -- 3. 狀態`status` 設定為即將授課
 INSERT INTO "COURSE_BOOKING" (user_id, course_id, booking_at, status)
 VALUES
-(
-    (SELECT id 
-    FROM "USER" 
-    WHERE email = 'wXlTq@hexschooltest.io'),
-    (SELECT id
-    FROM "COURSE"
-    WHERE user_id = (
-   	    SELECT id 
-        FROM "USER"
-        WHERE email = 'lee2000@hexschooltest.io'
-        )
-    ),
+((SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io'),
+(SELECT id FROM "COURSE" WHERE user_id = 
+    (SELECT id FROM "USER" WHERE email = 'lee2000@hexschooltest.io')),
   '2024-11-24 17:10:25',
   '即將授課'
 );
