@@ -103,18 +103,36 @@ VALUES
     -- 3. 教練`Q太郎` 需要有 `有氧運動` 與 `復健訓練` 專長
 INSERT INTO "COACH_LINK_SKILL" (coach_id,skill_id)
 VALUES
-((SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'lee2000@hexschooltest.io')),
- (SELECT id FROM "SKILL" WHERE name = '重訓')),
-((SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'muscle@hexschooltest.io')),
- (SELECT id FROM "SKILL" WHERE name = '重訓')),
-((SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')),
- (SELECT id FROM "SKILL" WHERE name = '重訓')),
-((SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'muscle@hexschooltest.io')),
- (SELECT id FROM "SKILL" WHERE name = '瑜伽')),
-((SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')),
- (SELECT id FROM "SKILL" WHERE name = '有氧運動')),
-((SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')),
- (SELECT id FROM "SKILL" WHERE name = '復健訓練'));
+((SELECT id FROM "COACH" 
+    WHERE user_id = (
+        SELECT id FROM "USER" WHERE email = 'lee2000@hexschooltest.io')),
+ (SELECT id FROM "SKILL" 
+    WHERE name = '重訓')),
+((SELECT id FROM "COACH" 
+    WHERE user_id = (
+        SELECT id FROM "USER" WHERE email = 'muscle@hexschooltest.io')),
+ (SELECT id FROM "SKILL" 
+    WHERE name = '重訓')),
+((SELECT id FROM "COACH" 
+    WHERE user_id = (
+        SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')),
+ (SELECT id FROM "SKILL" 
+    WHERE name = '重訓')),
+((SELECT id FROM "COACH" 
+    WHERE user_id = (
+        SELECT id FROM "USER" WHERE email = 'muscle@hexschooltest.io')),
+ (SELECT id FROM "SKILL" 
+    WHERE name = '瑜伽')),
+((SELECT id FROM "COACH" 
+    WHERE user_id = (
+        SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')),
+ (SELECT id FROM "SKILL" 
+    WHERE name = '有氧運動')),
+((SELECT id FROM "COACH" 
+    WHERE user_id = (
+        SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')),
+ (SELECT id FROM "SKILL" 
+    WHERE name = '復健訓練'));
 -- 3-3 修改：更新教練的經驗年數，資料需求如下：
     -- 1. 教練`肌肉棒子` 的經驗年數為3年
     -- 2. 教練`Q太郎` 的經驗年數為5年
@@ -354,4 +372,4 @@ SELECT
     COUNT(DISTINCT(user_id)) AS 預約會員人數
 FROM "COURSE_BOOKING"
 WHERE created_at BETWEEN '2024-12-01' AND '2024-12-31'
-AND status NOT IN ('課程已取消');
+AND status NOT IN ('課程已取消')
