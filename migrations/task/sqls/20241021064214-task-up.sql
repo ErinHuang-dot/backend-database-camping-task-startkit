@@ -283,16 +283,14 @@ SET
     join_at = '2024-11-25 14:01:59',
     status = '上課中'
 WHERE user_id = (
- 	SELECT id 
-    FROM "USER"
+ 	SELECT id FROM "USER"
     WHERE email = 'wXlTq@hexschooltest.io'
 ) 
 AND course_id = (
     SELECT id
     FROM "COURSE"
     WHERE user_id = (
-        SELECT id 
-        FROM "USER" 
+        SELECT id FROM "USER" 
         WHERE email = 'lee2000@hexschooltest.io')
 )
 AND status = '即將授課';
@@ -370,5 +368,4 @@ WHERE purchase_at BETWEEN '2024-12-01' AND '2024-12-31';
 -- 顯示須包含以下欄位： 預約會員人數
 SELECT COUNT(DISTINCT(user_id)) AS 預約會員人數
 FROM "COURSE_BOOKING"
-WHERE created_at BETWEEN '2024-12-01' AND '2024-12-31'
-AND status NOT IN ('課程已取消')
+WHERE created_at BETWEEN '2024-12-01' AND '2024-12-31' AND status NOT IN ('課程已取消');
